@@ -26,8 +26,8 @@
         </div>
     </form>
 
-    <!-- Customer Listings -->
-
+    <!-- Customer Listings -->  
+@if (count($customers) > 0)
     @foreach ($customers as $customer)
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
@@ -76,6 +76,13 @@
         </div>
     </div>
     @endforeach
+@else
+<div class="card mb-4">
+    <div class="card-body">
+        No Record Found
+    </div>
+</div>
+@endif
 
     <!-- Pagination Links -->
     <div class="row justify-content-center">
