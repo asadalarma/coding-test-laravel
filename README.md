@@ -43,7 +43,24 @@ This test is designed to evaluate your ability to implement complex search funct
 
 Create a branch with your name and submit your code in a pull request.
 
-**Explanation:**
+### Explantion of Implementation:
 I implemented the search functionality in Laravel by allowing users to search for customers based on email, order number, or item name. The search is handled in the CustomerController, where I used Eloquent's whereHas method to filter related models efficiently. This approach ensures that only the relevant customers, along with their associated orders and items, are retrieved.
 
 To optimize performance, I ensured that key columns like email, order_number, and item name are indexed to speed up database lookups. Eager loading (with) was applied to prevent the N+1 query problem, reducing the number of database queries needed. I also employed query scopes in the model to keep the code clean and reusable. This combination of techniques helps in handling large datasets efficiently while maintaining a responsive search experience.
+### Usage:
+1. **Composer Install Command:** 
+run composer install , make sure you have the latest version of composer
+
+2. **Php Artisan Migrate Command:** 
+run php artisan migrate:refresh or php artisan migrate for creating tables in database
+
+3. **Database Seeder:** 
+run php artisan db:seed --class=DatabaseSeeder
+if above command gives error then run commands in sequence for dumpping fake data
+run php artisan db:seed --class=UserTableSeeder
+run php artisan db:seed --class=ItemTableSeeder
+run php artisan db:seed --class=OrderItemTableSeeder
+
+4. **Serve Laravel:** 
+run php artisan --serve to run 127.0.0.1:8000
+visit website (http://127.0.0.1:8000/customers)
