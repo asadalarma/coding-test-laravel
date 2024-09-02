@@ -65,4 +65,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+
+    public function scopeByEmail($query, $email)
+    {
+        return $query->where('email', 'like', '%' . $email . '%');
+    }
+
+    public function scopeByOrderNumber($query, $orderNumber)
+    {
+        return $query->whereHas('orders', function ($q) use ($orderNumber) {
+            $q->where('order_number', 'like', '%' . $orderNumber . '%');
+        });
+    }
+
+    public function scopeByItemName($query, $itemName)
+    {
+        return $query->whereHas('orders.items', function ($q) use ($itemName) {
+            $q->where('name', 'like', '%' . $itemName . '%');
+        });
+    }
 }
