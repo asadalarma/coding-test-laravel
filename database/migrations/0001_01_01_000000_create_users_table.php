@@ -26,6 +26,8 @@ return new class extends Migration
             $table->enum('user_type', [User::USER_TYPE_ADMIN, User::USER_TYPE_CUSTOMER, User::USER_TYPE_VENDOR])->default('customer');
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->index('email');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

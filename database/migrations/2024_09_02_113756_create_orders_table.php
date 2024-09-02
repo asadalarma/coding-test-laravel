@@ -28,6 +28,8 @@ return new class extends Migration
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->index('order_number');
         });
     }
 
