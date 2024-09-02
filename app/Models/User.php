@@ -6,10 +6,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    const USER_TYPE_ADMIN = 'admin';
+    const USER_TYPE_CUSTOMER = 'customer';
+    const USER_TYPE_VENDOR = 'vendor';
 
     /**
      * The attributes that are mass assignable.
@@ -17,9 +23,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'username',
         'email',
         'password',
+        'phone',
+        'address',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -43,5 +55,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function scopeUserType($query, $userType){
+        return $query->whereUserType($userType);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }
