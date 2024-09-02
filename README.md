@@ -38,8 +38,12 @@ You are working on a Laravel application that manages customers, their orders, a
 Submit your code and explanation via email or through a GitHub repository link.
 
 ---
-f
 This test is designed to evaluate your ability to implement complex search functionality in Laravel, optimizing for performance and adhering to best practices.
 
 
 Create a branch with your name and submit your code in a pull request.
+
+**Explanation:**
+I implemented the search functionality in Laravel by allowing users to search for customers based on email, order number, or item name. The search is handled in the CustomerController, where I used Eloquent's whereHas method to filter related models efficiently. This approach ensures that only the relevant customers, along with their associated orders and items, are retrieved.
+
+To optimize performance, I ensured that key columns like email, order_number, and item name are indexed to speed up database lookups. Eager loading (with) was applied to prevent the N+1 query problem, reducing the number of database queries needed. I also employed query scopes in the model to keep the code clean and reusable. This combination of techniques helps in handling large datasets efficiently while maintaining a responsive search experience.
