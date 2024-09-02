@@ -49,14 +49,14 @@ I implemented the search functionality in Laravel by allowing users to search fo
 To optimize performance, I ensured that key columns like email, order_number, and item name are indexed to speed up database lookups. Eager loading (with) was applied to prevent the N+1 query problem, reducing the number of database queries needed. I also employed query scopes in the model to keep the code clean and reusable. This combination of techniques helps in handling large datasets efficiently while maintaining a responsive search experience.
 ### Usage:
 1. **Composer Install Command:** 
-    - run composer install , make sure you have the latest version of composer
+    - run composer install, make sure you have the latest version of composer
 
 2. **Php Artisan Migrate Command:** 
-    - run php artisan migrate:refresh or php artisan migrate for creating tables in database
+    - run php artisan migrate:refresh or php artisan migrate for creating tables in the database
 
 3. **Database Seeder:** 
     - run php artisan db:seed --class=DatabaseSeeder
-    - if above command gives error then run commands in sequence for dumpping fake data
+    - if the above command gives an error then run commands in sequence to dump fake data
     - run php artisan db:seed --class=UserTableSeeder
     - run php artisan db:seed --class=ItemTableSeeder
     - run php artisan db:seed --class=OrderItemTableSeeder
